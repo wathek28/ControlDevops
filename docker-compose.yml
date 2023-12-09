@@ -10,9 +10,9 @@ services:
       context: .
       dockerfile: ./Dockerfile
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/eventsProject?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/eventsProject?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD:
+      SPRING_DATASOURCE_PASSWORD: 
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
     depends_on:
@@ -37,17 +37,15 @@ services:
       - eventsProject-network
     volumes:
       - mysql_data:/opt/mysql/data
-      - mysql_extenstions:/opt/mysql/extensions
+      - mysql_extensions:/opt/mysql/extensions
       - mysql_logs:/mysql/logs
 
 networks:
-  deventsProject-network:
+  eventsProject-network:
+    driver: bridge
 
 volumes:
   events-project-data:
   mysql_data:
-  mysql_extenstions:
+  mysql_extensions:
   mysql_logs:
-
-
-
