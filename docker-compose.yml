@@ -18,7 +18,7 @@ services:
     depends_on:
       - mysqldb
     networks:
-      - devops-network
+      - eventsProject-network
     restart: on-failure
     volumes:
       - events-project-data:/events-project-data
@@ -34,14 +34,14 @@ services:
       - "3306:3306"
     restart: unless-stopped
     networks:
-      - devops-network
+      - eventsProject-network
     volumes:
       - mysql_data:/opt/mysql/data
       - mysql_extenstions:/opt/mysql/extensions
       - mysql_logs:/mysql/logs
 
 networks:
-  devops-network:
+  deventsProject-network:
 
 volumes:
   events-project-data:
