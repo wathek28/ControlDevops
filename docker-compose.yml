@@ -44,7 +44,7 @@ networks:
   devops-network:
 
 volumes:
-  back-devops-project-data:
+  events-project-data:
   mysql_data:
   mysql_extenstions:
   mysql_logs:
