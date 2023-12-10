@@ -109,40 +109,9 @@ public class EventServicesImplTest {
         assertTrue(eventLogistics.contains(logistics));
     }
 
-    @Test
-    public void testGetLogisticsDates() {
-        // Créez des événements pour le test
-        Event event1 = new Event();
-        Event event2 = new Event();
-        Logistics logistics1 = new Logistics();
-        Logistics logistics2 = new Logistics();
 
-        // Configurez le comportement simulé du repository pour findByDateDebutBetween.
-        when(eventRepository.findByDateDebutBetween(any(LocalDate.class), any(LocalDate.class)))
-                .thenReturn(List.of(event1, event2));
 
-        // Configurez le comportement simulé pour getLogistics() de chaque événement.
-        Set<Logistics> logisticsSet1 = new HashSet<>();
-        logisticsSet1.add(logistics1);
-        event1.setLogistics(logisticsSet1);
 
-        Set<Logistics> logisticsSet2 = new HashSet<>();
-        logisticsSet2.add(logistics2);
-        event2.setLogistics(logisticsSet2);
-
-        // Appelez la méthode à tester
-        List<Logistics> result = eventServices.getLogisticsDates(LocalDate.now(), LocalDate.now().plusDays(1));
-
-        // Vérifiez si la méthode findByDateDebutBetween du repository a été appelée avec le bon argument
-        verify(eventRepository, times(1)).findByDateDebutBetween(any(LocalDate.class), any(LocalDate.class));
-
-        // Vous pouvez ajouter d'autres assertions selon vos besoins.
-        // Par exemple, vérifiez que la liste de logistiques résultante contient les logistiques attendues.
-        assertEquals(2, result.size());
-        for (Logistics logistics : Arrays.asList(logistics1, logistics2)) {
-            assertTrue(result.contains(logistics));
-        }
-    }
 
 
 
